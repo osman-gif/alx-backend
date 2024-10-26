@@ -5,7 +5,7 @@ Deletion-resilient hypermedia pagination
 
 import csv
 import math
-from typing import List
+from typing import Dict, List
 
 
 class Server:
@@ -43,10 +43,14 @@ class Server:
         """
         Returns a dictionary containing a dataset page
         """
+
+        indexed_dataset = self.indexed_dataset()
+        assert 0 <= index < len(indexed_dataset)
+
         data = []
         next_index = index
         for _ in range(page_size):
-            while next_index not in self.indexed_dataset():
+            while next_index not in self.indexed_dataset().keys():
                 next_index += 1
             data.append(self.indexed_dataset()[next_index])
             next_index += 1
