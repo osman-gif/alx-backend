@@ -18,8 +18,9 @@ class LIFOCache(BaseCaching):
         Add an item in the cache
         """
         if key is not None and item is not None:
-            keys = list(self.cache_data.keys())
+            
             if len(self.cache_data.items()) >= self.MAX_ITEMS:
+                keys = list(self.cache_data.keys())
                 if key not in self.cache_data.keys():
                     print(f"DISCARD: ", (keys[-1]))
                     del self.cache_data[keys[-1]]
