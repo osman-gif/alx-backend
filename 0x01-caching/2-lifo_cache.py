@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-
+"""
+Create a class LIFOCache that inherits from BaseCaching and is a caching
+"""
 from base_caching import BaseCaching
 
 
