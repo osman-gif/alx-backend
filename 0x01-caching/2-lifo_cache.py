@@ -18,7 +18,7 @@ class LIFOCache(BaseCaching):
         Add an item in the cache
         """
         if key is not None and item is not None:
-            
+
             if len(self.cache_data.items()) >= self.MAX_ITEMS:
                 keys = list(self.cache_data.keys())
                 del self.cache_data[keys[-1]]
