@@ -40,13 +40,10 @@ class FIFOCache(BaseCaching):
         """
 
         if key is not None and item is not None:
-            keys = []
-
-            keys = list(self.cache_data.keys())
-            if len(keys) >= self.MAX_ITEMS:
-                if key not in list(self.cache_data.keys()):
-                    del self.cache_data[keys[0]]
-                    print(f"DISCARD: ", (keys[0]))
+            if len(self.cache_data.items()) >= self.MAX_ITEMS:
+                keys = list(self.cache_data.keys())
+                del self.cache_data[keys[0]]
+                print("DISCARD:", keys[0])
             self.cache_data[key] = item
 
     def get(self, key):
